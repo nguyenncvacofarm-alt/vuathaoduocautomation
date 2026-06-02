@@ -26,36 +26,62 @@
         <a href="privacy-policy.html">Privacy Policy</a> |
         <a href="terms.html">Terms of Service</a>
     </p>
-<button onclick="loginTikTok()">
-    Connect TikTok
-</button>
-
 <script>
+
 function loginTikTok() {
+
+
 
     const clientKey = "awzzmy6trghishlk";
 
-    const redirectUri =
-    encodeURIComponent(
-      "https://mfneoi82y.tino.page/rest/oauth2-credential/callback"
+
+
+    const redirectUri = encodeURIComponent(
+
+        "https://mfneoi82y.tino.page/rest/oauth2-credential/callback"
+
     );
 
-    const state =
-    Math.random().toString(36).substring(2);
 
-    const scope =
-    "user.info.basic,video.upload,video.publish";
+
+    const state = Date.now().toString();
+
+
+
+    // Test Login Kit trước
+
+    const scope = encodeURIComponent(
+
+        "user.info.basic"
+
+    );
+
+
 
     const authUrl =
-      `https://www.tiktok.com/v2/auth/authorize/` +
-      `?client_key=${clientKey}` +
-      `&scope=${scope}` +
-      `&response_type=code` +
-      `&redirect_uri=${redirectUri}` +
-      `&state=${state}`;
+
+        "https://www.tiktok.com/v2/auth/authorize/" +
+
+        "?client_key=" + clientKey +
+
+        "&response_type=code" +
+
+        "&scope=" + scope +
+
+        "&redirect_uri=" + redirectUri +
+
+        "&state=" + state;
+
+
+
+    console.log(authUrl);
+
+
 
     window.location.href = authUrl;
+
 }
+
 </script>
 </body>
 </html>
